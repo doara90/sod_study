@@ -15,29 +15,16 @@ import com.erp.app.service.HomeService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class TourController {
 	
 	@Autowired
 	private HomeService homeService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TourController.class);
 	
-	@RequestMapping("/")
-	public String home() {
+	@RequestMapping("/tour")
+	public String tour() {
 		
-		return "home";
-	}
-	
-	
-	@RequestMapping("/SelectMember")
-	public @ResponseBody HashMap<String, Object> SelectMember(MemberDTO member) throws Exception {
-		
-		MemberDTO result = homeService.SelectMember(member); 
-		
-		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-	    hashmap.put("result", result);
-	    hashmap.put("status", result == null ? false : true);
-
-		return hashmap;
+		return "tour";
 	}
 }

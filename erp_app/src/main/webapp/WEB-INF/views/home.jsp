@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
- 
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>SOD tour 로그인</title>
+  <title>Sod Tour : 로그인</title>
 
   <!-- Favicons -->
   <link href="resources/img/favicon.png" rel="icon">
@@ -24,35 +23,87 @@
   <!-- Custom styles for this template -->
   <link href="resources/css/style.css" rel="stylesheet">
   <link href="resources/css/style-responsive.css" rel="stylesheet">
+
   
-  <!-- =======================================================
-    Template Name: Dashio
-    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
-    Author: TemplateMag.com
-    License: https://templatemag.com/license/
-  ======================================================= -->
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="resources/lib/jquery/jquery.min.js"></script>
+  <script src="resources/lib/bootstrap/js/bootstrap.min.js"></script>
+  <!--BACKSTRETCH-->
+  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+  <script type="text/javascript" src="resources/lib/jquery.backstretch.min.js"></script>
+  <script>
+    $.backstretch("img/login-bg.jpg", {
+      speed: 500
+    });
+    
+    function check() {
+    	
+    	if($("#id").val() == ""){
+        	alert("User ID를 입력하세요.");
+        	return;
+    	}
+    	if($("#password").val() == ""){
+        	alert("Password를 입력하세요.");
+        	return;
+    	}
+
+		$.ajax({
+			url : "SelectMember",
+			type : "post",
+			async : false,
+			data : {
+				"id" : $("#id").val(),
+				"password" : $("#password").val(),
+			},
+			dataType : "json",
+			success : function(data){
+				if(!data.status){
+	                alert("존재하지 않는 ID입니다.");
+	                return;
+	            }
+				
+				window.frm.submit();
+			},
+			error : function(){
+				alert("error");
+			}
+
+		});
+    }
+    
+  </script>
+  
 </head>
 
 <body>
   <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
-  <div id="login-page">
+<div id="login-page">
     <div class="container">
-      <form class="form-login" action="index.html">
+      <form class="form-login" name="frm" onsubmit="return false;" method="post" action="/tour" >
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
-          <input type="text" class="form-control" placeholder="User ID" autofocus>
+          <input type="text" id="id" class="form-control" placeholder="User ID" autofocus>
           <br>
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" id="password" class="form-control" placeholder="Password">
           <label class="checkbox">
             <span class="pull-right">
             <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
             </span>
             </label>
-          <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+          <button class="btn btn-theme btn-block" type="submit" onclick="check();" ><i class="fa fa-lock"></i> SIGN IN</button>
           <hr>
+          <div class="login-social-link centered">
+          </div>
+          <div class="registration">
+            Don't have an account yet?<br/>
+            <a class="" href="#">
+              Create an account
+              </a>
+          </div>
         </div>
+        
         <!-- Modal -->
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
           <div class="modal-dialog">
@@ -76,17 +127,6 @@
       </form>
     </div>
   </div>
-  <!-- js placed at the end of the document so the pages load faster -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <!--BACKSTRETCH-->
-  <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-  <script type="text/javascript" src="lib/jquery.backstretch.min.js"></script>
-  <script>
-    $.backstretch("img/login-bg.jpg", {
-      speed: 500
-    });
-  </script>
 </body>
 
 </html>

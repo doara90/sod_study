@@ -3,10 +3,29 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="home">
 
-    <select id="select" resultType="com.erp.app.dto.HomeDTO" >
+    <select id="SelectMember" parameterType="com.erp.app.dto.MemberDTO" resultType="com.erp.app.dto.MemberDTO" >
     
-    SELECT UserID, ITEM1, ITEM2
-      FROM ItemTbl
-      
+	    SELECT NO
+	         , NAME
+	         , ID
+	         , PASSWORD
+	         , GENDER
+	         , EMAIL
+	         , PHONE
+	         , BIRTH
+	         , JOIN_DATE
+	         , LEV
+	         , LAST_LOGIN
+	         , APPROVAL
+	      FROM MEMBER
+	     WHERE 1 = 1
+	     
+	    <if test="Id != null and Id != ''">
+           AND ID = #{Id}
+        </if>
+	    <if test="Password != null and Password != ''">
+           AND PASSWORD = #{Password}
+        </if>
+	     
     </select> 
 </mapper>

@@ -1,10 +1,9 @@
 package com.erp.app.service;
 
 import java.util.List;
-
-import com.erp.app.dto.HomeDTO;
+import com.erp.app.dto.MemberDTO;
 
 public interface HomeService {
 
-	List<HomeDTO> select();
+	MemberDTO SelectMember(MemberDTO member);
 }
