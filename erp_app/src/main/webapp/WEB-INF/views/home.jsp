@@ -32,11 +32,13 @@
   <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
   <script type="text/javascript" src="resources/lib/jquery.backstretch.min.js"></script>
   <script>
-    $.backstretch("img/login-bg.jpg", {
+    $.backstretch("resources/img/login-bg.jpg", {
       speed: 500
     });
     
     function check() {
+    	var $errorDiv   = $("#error");
+    	$errorDiv.hide();
     	
     	if($("#id").val() == ""){
         	alert("User ID를 입력하세요.");
@@ -58,7 +60,8 @@
 			dataType : "json",
 			success : function(data){
 				if(!data.status){
-	                alert("존재하지 않는 ID입니다.");
+					$errorDiv.html("ID나 비밀번호를 확인해주세요");
+                    $errorDiv.show();
 	                return;
 	            }
 				
@@ -71,6 +74,7 @@
 		});
     }
     
+
   </script>
   
 </head>
@@ -81,12 +85,14 @@
       *********************************************************************************************************************************************************** -->
 <div id="login-page">
     <div class="container">
-      <form class="form-login" name="frm" onsubmit="return false;" method="post" action="/tour" >
+      <form class="form-login" name="frm" onsubmit="return false;" method="post" action="/tour" > <!-- form태그는 무조건 submit 속성이 있어서 return false로 해두고 유효성 체크 -->
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
           <input type="text" id="id" class="form-control" placeholder="User ID" autofocus>
           <br>
           <input type="password" id="password" class="form-control" placeholder="Password">
+          <div id="error"align="center" style="color:red; margin:5px">
+          </div>
           <label class="checkbox">
             <span class="pull-right">
             <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
@@ -98,7 +104,7 @@
           </div>
           <div class="registration">
             Don't have an account yet?<br/>
-            <a class="" href="#">
+            <a class="" href="/signUp">
               Create an account
               </a>
           </div>
