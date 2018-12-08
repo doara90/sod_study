@@ -15,8 +15,4 @@ public class HomeServiceImpl implements HomeService {
 	public MemberDTO SelectMember(MemberDTO member) {
 		return homeDao.SelectMember(member);		
 	}
-	
-	public MemberDTO RegisterMember(MemberDTO member) {
-		return homeDao.RegisterMember(member);		
-	}
 }

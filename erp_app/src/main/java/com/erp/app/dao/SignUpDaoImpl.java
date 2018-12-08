@@ -7,13 +7,16 @@ import org.springframework.stereotype.Repository;
 import com.erp.app.dto.MemberDTO;
 
 @Repository
-public class HomeDaoImpl implements HomeDao {
+public class SignUpDaoImpl implements SignUpDao {
 
 	@Autowired
 	private SqlSessionTemplate session;
 
-	public MemberDTO SelectMember(MemberDTO member) {
-		return session.selectOne("home.SelectMember", member);
+	public int IdCheck(String userId) {
+		return session.selectOne("signUp.IdCheck", userId);
 	}
 
+	public MemberDTO RegisterMember(MemberDTO member) {
+		return session.selectOne("signUp.RegisterMember", member);
+	}	
 }

@@ -4,6 +4,7 @@
 
 	<mappers>
 		<mapper resource="mappers/Home.xml" />
+		<mapper resource="mappers/SignUp.xml" />
 	</mappers>
 </configuration>
  

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="signUp">
+
+	<select id="IdCheck" parameterType="String" resultType="integer" >
+		SELECT COUNT(*) FROM MEMBER WHERE ID = #{userId}
+    </select>  
+
+    <select id="RegisterMember" parameterType="com.erp.app.dto.MemberDTO" resultType="com.erp.app.dto.MemberDTO" >
+    
+	    INSERT INTO [dbo].[MEMBER]
+           ([NO]
+           ,[NAME]
+           ,[ID]
+           ,[PASSWORD]
+           ,[GENDER]
+           ,[EMAIL]
+           ,[PHONE]
+           ,[BIRTH]
+           ,[JOIN_DATE]
+           ,[LEV]
+           ,[LAST_LOGIN]
+           ,[APPROVAL])
+     VALUES
+           (NO, int,
+           ,#{Name},
+           ,#{Id},
+           ,#{Password},
+           ,GENDER, varchar(2),
+           ,EMAIL, varchar(50),
+           ,PHONE, varchar(50),
+           ,BIRTH, varchar(8),
+           ,GETDATE(),
+           ,LEV, int,
+           ,LAST_LOGIN, datetime,
+           ,APPROVAL, varchar(2))
+ 
+    </select>  
+</mapper>

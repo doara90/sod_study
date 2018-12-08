@@ -29,13 +29,6 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/signUp")
-	public String signUp() {
-		
-		return "signUp";
-	}
-	
-	
 	@RequestMapping("/SelectMember")
 	public @ResponseBody HashMap<String, Object> SelectMember(MemberDTO member) throws Exception {
 		
@@ -47,17 +40,5 @@ public class HomeController {
 
 		return hashmap;
 	}
-	
-	@RequestMapping("/RegisterMember")
-	public @ResponseBody HashMap<String, Object> RegisterMember(MemberDTO member) throws Exception {
-		
-		MemberDTO result = homeService.RegisterMember(member); 
-		
-		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-	    hashmap.put("result", result);
-	    hashmap.put("status", result == null ? false : true);
 
-		return hashmap;
-	}
-	
 }

@@ -157,7 +157,7 @@
 		<dependency>
          <groupId>org.lazyluke</groupId>
          <artifactId>log4jdbc-remix</artifactId>
-         <version>0.2.7</version>
+         <version>0.2.6</version> <!-- 오류때문에 0.2.7 -> 0.2.6으로 바꿈  -->
       </dependency>
  
 	</dependencies>

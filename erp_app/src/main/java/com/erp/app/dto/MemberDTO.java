@@ -14,6 +14,9 @@ public class MemberDTO {
 	private String Lev;
 	private String LastLogin;
 	private String Approval;
+	private String Address1;
+	private String Address2;
+	private String ZipCode;
 	
 	public String getNo() {
 		return No;
@@ -87,7 +90,25 @@ public class MemberDTO {
 	public void setApproval(String approval) {
 		Approval = approval;
 	}
-	
+	public String getAddress1() {
+		return Address1;
+	}
+	public void setAddress1(String address1) {
+		Address1 = address1;
+	}
+	public String getAddress2() {
+		return Address2;
+	}
+	public void setAddress2(String address2) {
+		Address2 = address2;
+	}
+	public String getZipCode() {
+		return ZipCode;
+	}
+	public void setZipCode(String zipCode) {
+		ZipCode = zipCode;
+	}
+
 	
 	
 }
