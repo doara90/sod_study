@@ -1,5 +1,8 @@
 package com.erp.app.dto;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MemberDTO {
 	private String No;
@@ -64,7 +67,7 @@ public class MemberDTO {
 		return Birth;
 	}
 	public void setBirth(String birth) {
-		Birth = birth;
+		Birth = birth.replace("-", "");
 	}
 	public String getJoinDate() {
 		return JoinDate;

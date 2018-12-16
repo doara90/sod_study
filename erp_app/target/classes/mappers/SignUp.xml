@@ -4,37 +4,49 @@
 <mapper namespace="signUp">
 
 	<select id="IdCheck" parameterType="String" resultType="integer" >
-		SELECT COUNT(*) FROM MEMBER WHERE ID = #{userId}
+			 SELECT COUNT(*) FROM MEMBER WHERE ID = #{userId}
     </select>  
 
-    <select id="RegisterMember" parameterType="com.erp.app.dto.MemberDTO" resultType="com.erp.app.dto.MemberDTO" >
-    
-	    INSERT INTO [dbo].[MEMBER]
-           ([NO]
-           ,[NAME]
-           ,[ID]
-           ,[PASSWORD]
-           ,[GENDER]
-           ,[EMAIL]
-           ,[PHONE]
-           ,[BIRTH]
-           ,[JOIN_DATE]
-           ,[LEV]
-           ,[LAST_LOGIN]
-           ,[APPROVAL])
-     VALUES
-           (NO, int,
-           ,#{Name},
-           ,#{Id},
-           ,#{Password},
-           ,GENDER, varchar(2),
-           ,EMAIL, varchar(50),
-           ,PHONE, varchar(50),
-           ,BIRTH, varchar(8),
-           ,GETDATE(),
-           ,LEV, int,
-           ,LAST_LOGIN, datetime,
-           ,APPROVAL, varchar(2))
- 
-    </select>  
+
+    <insert id="RegisterMember" parameterType="com.erp.app.dto.MemberDTO">
+	 	<selectKey resultType="String" keyProperty="No" order="BEFORE">
+			 SELECT format(GETDATE(),'yyyyMMddHHmmss')
+		</selectKey>
+
+		     INSERT INTO MEMBER (
+		             NO
+		           , NAME
+		           , ID
+		           , PASSWORD
+		           , GENDER
+		           , EMAIL
+		           , PHONE
+		           , BIRTH
+		           , JOIN_DATE
+		           , LEV
+		           , LAST_LOGIN
+		           , APPROVAL
+		           , ADDRESS1
+		           , ADDRESS2
+		           , ZIPCODE
+		           )
+		     VALUES ( 
+		             #{No}
+		           , #{Name}
+		           , #{Id}
+		           , #{Password}
+		           , #{Gender}
+		           , #{Email}
+		           , #{Phone}
+		           , #{Birth}
+		           , GETDATE()
+		           , 1
+		           , GETDATE()
+		           , 'F'
+		           , #{Address1}
+		           , #{Address2}
+		           , #{ZipCode}
+		           )
+		 
+    </insert>  
 </mapper>

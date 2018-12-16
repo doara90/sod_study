@@ -1,8 +1,18 @@
 package com.erp.app.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.erp.app.dao.HomeDao;
 import com.erp.app.dto.MemberDTO;
 
-public interface HomeService {
+@Service
+public class HomeService {
 
-	MemberDTO SelectMember(MemberDTO member);
+	@Autowired
+	private HomeDao homeDao;
+
+	public MemberDTO SelectMember(MemberDTO member) {
+		return homeDao.SelectMember(member);		
+	}
 }

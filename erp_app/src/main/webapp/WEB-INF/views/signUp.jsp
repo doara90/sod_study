@@ -28,14 +28,19 @@
   <link href="resources/css/style.css" rel="stylesheet">
   <link href="resources/css/style-responsive.css" rel="stylesheet">
   
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <script>
-  var check =0;
+  var check = false;
+  
     function id_check() {
+    	
     	var id = $("#id").val();
+    	
     	if(id=="" || id==null) {
     		alert("아이디를 입력해주세요");
     		return;
     	}
+    	
     	$.ajax({
 			url : "idCheck",
 			type : "post",
@@ -44,12 +49,12 @@
 			dataType : "json",
 			contentType: "application/json; charset=UTF-8",
 			success : function(data){
-				if(data.cnt>0){
+				if(!data.result){
 					alert("이미 있는 아이디 입니다.");
 	                return;
 	            }else {
 	            	alert("사용가능한 아이디 입니다.");
-	            	check=1;
+	            	check = true;
 	                return;
 	            }
 			},
@@ -62,67 +67,53 @@
     }
     
     function join() {
-    	  function pw_check() {
-    	    	var pw1 = $("#password").val();
-    	    	var pw2 = $("#confirm_password").val();
-    	    	if(pw1==pw2) return true;
-    	    	else return false;
-    	    };
-    	  
-        if(check==0) {
+
+    	//- 유효성 체크
+        if(!check) {
         	alert("아이디 중복체크를 해주세요");
             return;
         }
-        if(pw_check()==false){
+    	
+    	var pw1 = $("#password").val();
+    	var pw2 = $("#confirm_password").val();
+    	if(pw1!=pw2) {
         	alert("입력한 두 비빌번호가 다릅니다");
             return;
-        }
-        
-        var id= $("#id").val();
-        var password= $("#confirm_password").val();
-        var username= $("#username").val();
-        var email= $("#email").val();
-        var phone= $("#phone").val();
-        var birthDate= $("#birthDate").val();
-        var gender= document.querySelector('input[name="gender"]:checked').value;
-        var address1= $("#address1").val();
-        var address2= $("#address2").val();
-        var zipcode= $("#zip_code").val();
+    	}
 
         $.ajax({
-			url : "RegisterMember",
-			type : "post",
-			async : false,
-			data : {
-				"name":username,
-				"id":id,
-				"password":password,
-				"gender":gender,
-				"email":email,
-				"phone":phone,
-				"birth":birthDate,
-				"address1":address1,
-				"address2":address2,
-				"zipcode":zipcode
-			},
-			dataType : "json",
-			contentType: "application/json; charset=UTF-8",
-			success : function(data){
-				
-			},
-			error : function(){
-				alert("error");
-			}
+            url : "RegisterMember",
+            type : "post",
+            async : false,
+            data : {
+            	"Id": $("#id").val(),
+            	"Password": $("#confirm_password").val(),
+            	"Name": $("#username").val(),
+            	"Email": $("#email").val(),
+            	"Phone": $("#phone").val(),
+            	"Birth": $("#birthDate").val(),
+            	"ZipCode": $("#zipCode").val(),
+            	"Address1": $("#address1").val(),
+            	"Address2": $("#address2").val(),
+            	"Gender": $('input[name="gender"]:checked').val(),
 
-		});
-      
+            },
+            dataType : "json",
+            success : function(data){
+            	if(data.result){
+                	alert("회원가입 되었습니다.");
+    				window.signupForm.submit();
+            	}
+            },
+            error : function(){
+               alert("error");
+            }
+
+         });
+        
+
     }
     
-  
-</script>
-
-  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -156,7 +147,7 @@
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('zip_code').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('zipCode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('address1').value = fullAddr;
 
                 // 커서를 상세주소 필드로 이동한다.
@@ -192,7 +183,7 @@
                     <label for="id" class="control-label col-lg-2">아이디</label>
                     <div class="col-lg-10">
                       <input class=" form-control" style="width:30%; display:inline" id="id" name="id" type="text">
-                      <input type="button" class="btn btn-theme04" onclick="javascript:id_check()" value="중복확인">
+                      <input type="button" class="btn btn-theme04" onclick="id_check();" value="중복확인">
                     </div>
                   </div>
                   <div class="form-group " style="inline-block">
@@ -250,7 +241,7 @@
                   
                   <div class="form-group">
                   	<label for="addr" class="control-label col-lg-2 col-sm-3">주소</label>
-                  	<input class="form-control " style="width:20%; display:inline"  type="text" id="zip_code" placeholder="우편번호" readOnly/>
+                  	<input class="form-control " style="width:20%; display:inline"  type="text" id="zipCode" placeholder="우편번호" readOnly/>
 				  	<input type="button" class="btn btn-theme" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 				  	<label for="addr" class="control-label col-lg-2 col-sm-3"></label>
 				  	<div style="margin-top:3px;">
