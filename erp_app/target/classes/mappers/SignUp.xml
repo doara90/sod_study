@@ -49,4 +49,10 @@
 		           )
 		 
     </insert>  
+    
+	<update id="MemberConfirm" parameterType="String" >
+			 UPDATE MEMBER
+			    SET APPROVAL = 'T'
+			  WHERE NO = #{No}
+    </update>  
 </mapper>

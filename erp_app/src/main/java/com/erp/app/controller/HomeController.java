@@ -1,6 +1,7 @@
 package com.erp.app.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +22,6 @@ public class HomeController {
 	@Autowired
 	private HomeService homeService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
 	@RequestMapping("/")
 	public String home() {
 		
@@ -30,15 +29,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/SelectMember")
-	public @ResponseBody HashMap<String, Object> SelectMember(MemberDTO member) throws Exception {
+	public @ResponseBody Map<Object, Object> SelectMember(MemberDTO member) throws Exception {
 		
 		MemberDTO result = homeService.SelectMember(member); 
-		
-		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-	    hashmap.put("result", result);
-	    hashmap.put("status", result == null ? false : true);
 
-		return hashmap;
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("result", result);
+
+		return map;
 	}
 
 }

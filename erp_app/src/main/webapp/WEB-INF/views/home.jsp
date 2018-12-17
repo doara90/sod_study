@@ -51,7 +51,7 @@
 
 		$.ajax({
 			url : "SelectMember",
-			type : "post",
+			type : "POST",
 			async : false,
 			data : {
 				"id" : $("#id").val(),
@@ -60,10 +60,16 @@
 			dataType : "json",
 			success : function(data){
 				
-				if(!data.status){
+				var val = data.result;
+				
+				if(val == null){
 					$("#chkLogin").append("User ID 또는 Password를 다시 확인하세요.");
 	                return;
 	            }
+				else if(val.approval == 'F'){
+					$("#chkLogin").append("인증이 필요한 User ID 입니다.");
+	                return;
+				}
 				
 				window.frm.submit();
 			},

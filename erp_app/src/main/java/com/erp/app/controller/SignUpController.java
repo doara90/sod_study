@@ -28,20 +28,20 @@ public class SignUpController {
 	@RequestMapping("/idCheck")
 	public @ResponseBody Map<Object, Object> IdCheck(@RequestBody String userId) throws Exception {
 
-		Map<Object, Object> map = new HashMap<Object, Object>();
-
 		int cnt = signUpService.IdCheck(userId);
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("result", cnt == 0 ? true : false);
 		
 		return map;
 	}
 	
 	@RequestMapping("/RegisterMember")
-	public @ResponseBody HashMap<String, Object> RegisterMember(MemberDTO member) throws Exception {
+	public @ResponseBody Map<Object, Object> RegisterMember(MemberDTO member) throws Exception {
 
 		boolean result = signUpService.RegisterMember(member); 
-		
-		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		Map<Object, Object> map = new HashMap<Object, Object>();
 		map.put("result", result);
 
 		return map;
@@ -49,9 +49,8 @@ public class SignUpController {
 
 	@RequestMapping("/MemberConfirm")
 	public void MemberConfirm(String No) throws Exception {
-
-		String aa = "";
 		
+		signUpService.MemberConfirm(No); 
 		
 	}
 }

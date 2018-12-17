@@ -19,4 +19,8 @@ public class SignUpDao  {
 	public int RegisterMember(MemberDTO member) {
 		return session.insert("signUp.RegisterMember", member);
 	}	
+
+	public int MemberConfirm(String No) {
+		return session.update("signUp.MemberConfirm", No);
+	}	
 }

@@ -40,4 +40,13 @@ public class SignUpService {
 		
 		return emailResult;	
 	}
+
+	public void MemberConfirm(String No) {
+		
+		int result = signUpDao.MemberConfirm(No);
+		
+	}
+	
+
+
 }
