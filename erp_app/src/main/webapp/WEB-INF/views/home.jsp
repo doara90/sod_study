@@ -62,16 +62,14 @@
 				
 				var val = data.result;
 				
-				if(val == null){
-					$("#chkLogin").append("User ID 또는 Password를 다시 확인하세요.");
-	                return;
+				if(val == null || val == ""){
+					window.frm.submit();
 	            }
-				else if(val.approval == 'F'){
-					$("#chkLogin").append("인증이 필요한 User ID 입니다.");
+				else {
+					$("#chkLogin").append(val);
 	                return;
 				}
 				
-				window.frm.submit();
 			},
 			error : function(){
 				alert("error");

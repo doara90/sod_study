@@ -36,6 +36,8 @@ public class CommonService {
 		String recipient = member.getEmail();    //받는 사람의 메일주소를 입력해주세요.
 		String subject = member.getName() + "님 회원가입을 축하 드립니다."; //메일 제목 입력해주세요.
 		
+		// String vs StringBuilder 차이점
+		// https://jeong-pro.tistory.com/85 설명참조
 		StringBuilder content = new StringBuilder();
 		content.append("<html>");
 		content.append("<body>");

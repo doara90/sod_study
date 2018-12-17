@@ -13,6 +13,10 @@ public class HomeService {
 	private HomeDao homeDao;
 
 	public MemberDTO SelectMember(MemberDTO member) {
-		return homeDao.SelectMember(member);		
+		
+		MemberDTO result = homeDao.SelectMember(member);	
+		
+		
+		return result;		
 	}
 }
