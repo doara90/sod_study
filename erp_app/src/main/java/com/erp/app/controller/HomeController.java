@@ -2,14 +2,11 @@ package com.erp.app.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.erp.app.dto.MemberDTO;
 import com.erp.app.service.HomeService;
 
@@ -30,8 +27,9 @@ public class HomeController {
 	
 	@RequestMapping("/SelectMember")
 	public @ResponseBody Map<Object, Object> SelectMember(MemberDTO member, HttpServletRequest request) throws Exception {
-		
+
 		String checkLogin = "";
+		
 		MemberDTO result = homeService.SelectMember(member); 
 		
 		// 일치하는 계정이 없을 시 null로 return
