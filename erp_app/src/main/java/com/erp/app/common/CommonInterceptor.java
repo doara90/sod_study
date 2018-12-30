@@ -11,13 +11,23 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
 		boolean result = true;
-         
+        String uri = request.getRequestURI().toString().trim();
+        
         try {     
-        	
-            //세션값이 널일경우
-            if(request.getSession().getAttribute("LoginInfo") == null ){
+        	// 세션이 유지될 경우
+        	if (uri.equals("/") || uri.equals("/login") || uri.equals("/signUp")){
+        		if(request.getSession().getAttribute("LoginInfo") != null ){
 
-                response.sendRedirect("/");   
+                    response.sendRedirect("/tour");  
+                    result =  false;
+                }else{ 
+                    result =  true;
+                }
+        	}
+            //세션값이 널일경우
+            else if(request.getSession().getAttribute("LoginInfo") == null ){
+        		
+                response.sendRedirect("/");  
                 result =  false;
                  
             }else{ 
@@ -25,9 +35,10 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            result = false;
         }   
         return result;
 	}
+
 
 }

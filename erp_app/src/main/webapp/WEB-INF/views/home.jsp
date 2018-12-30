@@ -50,7 +50,7 @@
     	}
 
 		$.ajax({
-			url : "SelectMember",
+			url : "login",
 			type : "POST",
 			async : false,
 			data : {

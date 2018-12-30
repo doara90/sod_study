@@ -21,12 +21,12 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String home() {
-		
+
 		return "home";
 	}
 	
-	@RequestMapping("/SelectMember")
-	public @ResponseBody Map<Object, Object> SelectMember(MemberDTO member, HttpServletRequest request) throws Exception {
+	@RequestMapping("/login")
+	public @ResponseBody Map<Object, Object> login(MemberDTO member, HttpServletRequest request) {
 
 		String checkLogin = "";
 		
@@ -51,4 +51,11 @@ public class HomeController {
 		return map;
 	}
 
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+
+		request.getSession().invalidate();
+		
+		return "home";
+	}
 }
