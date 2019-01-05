@@ -78,6 +78,32 @@
 		});
     }
     
+    function findInfo() {
+
+    	if($("#email").val() == ""){
+    		alert("이메일을 입력하세요.");
+        	return;
+    	}
+    	
+    	$.ajax({
+			url : "findInfo",
+			type : "POST",
+			async : false,
+			data : {
+				"email" : $("#email").val(),
+			},
+			dataType : "json",
+			success : function(data){
+				alert('test');
+				
+			},
+			error : function(){
+				alert("error");
+			}
+
+		});
+    }
+    
   </script>
   
 </head>
@@ -123,11 +149,11 @@
               </div>
               <div class="modal-body">
                 <p>Enter your e-mail address below to reset your password.</p>
-                <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+                <input type="text" id="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
               </div>
               <div class="modal-footer">
                 <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-                <button class="btn btn-theme" type="button">Submit</button>
+                <button class="btn btn-theme"  onsubmit="return false;" onclick="findInfo();">Submit</button>
               </div>
             </div>
           </div>

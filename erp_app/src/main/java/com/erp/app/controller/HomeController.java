@@ -58,4 +58,15 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@RequestMapping("/findInfo")
+	public @ResponseBody Map<Object, Object> findInfo(MemberDTO member) {
+
+		String checkFindInfo = "";
+		
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		map.put("result", checkFindInfo);
+
+		return map;
+	}
 }
