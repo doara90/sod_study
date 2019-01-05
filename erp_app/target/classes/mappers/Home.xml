@@ -23,9 +23,29 @@
 	    <if test="Id != null and Id != ''">
            AND ID = #{Id}
         </if>
+	    <if test="Email != null and Email != ''">
+           AND EMAIL = #{Email}
+        </if>
 	    <if test="Password != null and Password != ''">
            AND PASSWORD = #{Password}
         </if>
 	     
     </select>
+    
+    
+    <update id="updateLastLogin" parameterType="com.erp.app.dto.MemberDTO">
+    
+	    UPDATE MEMBER
+	       SET LAST_LOGIN = GETDATE()
+	     WHERE ID = #{Id}
+	     
+    </update>
+    
+    <update id="updatePassword" parameterType="com.erp.app.dto.MemberDTO">
+    
+	    UPDATE MEMBER
+	       SET PASSWORD = #{Password}
+	     WHERE ID = #{Id}
+	     
+    </update>
 </mapper>

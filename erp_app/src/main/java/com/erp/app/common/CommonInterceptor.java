@@ -24,7 +24,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
                     result =  true;
                 }
         	}
-        	else if(uri.equals("/findInfo")) {
+        	else if(uri.equals("/findUserInfo")) {
                 result =  true;
         	}
             //技记蔼捞 澄老版快

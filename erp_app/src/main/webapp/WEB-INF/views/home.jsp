@@ -80,21 +80,34 @@
     
     function findInfo() {
 
+    	if($("#userId").val() == ""){
+    		alert("User ID를 입력하세요.");
+        	return;
+    	}
     	if($("#email").val() == ""){
-    		alert("이메일을 입력하세요.");
+    		alert("Email을 입력하세요.");
         	return;
     	}
     	
     	$.ajax({
-			url : "findInfo",
+			url : "findUserInfo",
 			type : "POST",
 			async : false,
 			data : {
+				"id" : $("#userId").val(),
 				"email" : $("#email").val(),
 			},
 			dataType : "json",
 			success : function(data){
-				alert('test');
+
+				if(!data.result){
+					alert("일치하는 계정이 없습니다.");
+	                return;
+	            }else {
+	            	alert("임시 비밀번호가 입력하신 Email로 발송되었습니다.");
+					$('#myModal').modal('hide');
+	                return;
+	            }
 				
 			},
 			error : function(){
@@ -102,6 +115,11 @@
 			}
 
 		});
+    }
+    
+    function initUserInfo() {
+    	$("#userId").val('');
+    	$("#email").val('');
     }
     
   </script>
@@ -144,15 +162,17 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="initUserInfo();">&times;</button>
                 <h4 class="modal-title">Forgot Password ?</h4>
               </div>
               <div class="modal-body">
                 <p>Enter your e-mail address below to reset your password.</p>
+                <input type="text" id="userId" name="userId" placeholder="User ID" autocomplete="off" class="form-control placeholder-no-fix">
+                <br>
                 <input type="text" id="email" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
               </div>
               <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                <button data-dismiss="modal" class="btn btn-default" type="button" onclick="initUserInfo();">Cancel</button>
                 <button class="btn btn-theme"  onsubmit="return false;" onclick="findInfo();">Submit</button>
               </div>
             </div>

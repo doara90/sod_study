@@ -15,4 +15,10 @@ public class HomeDao {
 	public MemberDTO SelectMember(MemberDTO member) {
 		return session.selectOne("home.SelectMember", member);
 	}
+	public void updateLastLogin(MemberDTO member) {
+		session.update("home.updateLastLogin", member);
+	}
+	public void updatePassword(MemberDTO member) {
+		session.update("home.updatePassword", member);
+	}
 }

@@ -18,6 +18,8 @@ public class HomeController {
 	
 	@Autowired
 	private HomeService homeService;
+	@Autowired
+	private HttpServletRequest request;
 	
 	@RequestMapping("/")
 	public String home() {
@@ -26,47 +28,26 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/login")
-	public @ResponseBody Map<Object, Object> login(MemberDTO member, HttpServletRequest request) {
+	public @ResponseBody Map<Object, Object> login(MemberDTO member) {
 
-		String checkLogin = "";
+		Map<Object, Object> result = homeService.SelectMember(member); 
 		
-		MemberDTO result = homeService.SelectMember(member); 
-		
-		// 일치하는 계정이 없을 시 null로 return
-		if(result == null) {
-			checkLogin = "User ID 또는 Password를 다시 확인하세요.";
-		}
-		// 이메일 인증을 거치지 않은 사용자
-		else if(result.getApproval().equals("F")) {
-			checkLogin = "인증이 필요한 User ID 입니다.";
-		}
-		// 로그인 성공
-		else {
-			request.getSession().setAttribute("LoginInfo", result);
-		}
-		
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		map.put("result", checkLogin);
-
-		return map;
+		return result;
 	}
 
 	@RequestMapping("/logout")
-	public String logout(HttpServletRequest request) {
+	public String logout() {
 
 		request.getSession().invalidate();
 		
-		return "home";
+		return "redirect:/";
 	}
 	
-	@RequestMapping("/findInfo")
-	public @ResponseBody Map<Object, Object> findInfo(MemberDTO member) {
+	@RequestMapping("/findUserInfo")
+	public @ResponseBody Map<Object, Object> findUserInfo(MemberDTO member) {
 
-		String checkFindInfo = "";
+		Map<Object, Object> result = homeService.findUserInfo(member); 
 		
-		Map<Object, Object> map = new HashMap<Object, Object>();
-		map.put("result", checkFindInfo);
-
-		return map;
+		return result;
 	}
 }

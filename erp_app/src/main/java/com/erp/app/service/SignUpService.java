@@ -5,6 +5,7 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.erp.app.common.CommonEmail;
 import com.erp.app.dao.SignUpDao;
 import com.erp.app.dto.MemberDTO;
 
@@ -14,7 +15,7 @@ public class SignUpService {
 	@Autowired
 	private SignUpDao signUpDao;
 	@Autowired
-	private CommonService commService;
+	private CommonEmail commonEmail;
 
 	public int IdCheck(String userId) {
 		return signUpDao.IdCheck(userId);		
@@ -29,7 +30,7 @@ public class SignUpService {
 		if(insertResult == 1)
 		{
 			try {
-				commService.mailSender(member);
+				commonEmail.signUpEmail(member);
 			} catch (MessagingException e) {
 				emailResult = false;
 				e.printStackTrace();
@@ -43,7 +44,7 @@ public class SignUpService {
 
 	public void MemberConfirm(String No) {
 		
-		int result = signUpDao.MemberConfirm(No);
+		signUpDao.MemberConfirm(No);
 		
 	}
 	

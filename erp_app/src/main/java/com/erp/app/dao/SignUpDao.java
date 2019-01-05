@@ -20,7 +20,7 @@ public class SignUpDao  {
 		return session.insert("signUp.RegisterMember", member);
 	}	
 
-	public int MemberConfirm(String No) {
-		return session.update("signUp.MemberConfirm", No);
+	public void MemberConfirm(String No) {
+		session.update("signUp.MemberConfirm", No);
 	}	
 }
