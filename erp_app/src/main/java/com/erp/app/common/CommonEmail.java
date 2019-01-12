@@ -82,7 +82,7 @@ public class CommonEmail {
 		content.append(member.getName() + "님 회원가입을 축하 드립니다.<br>");
 		content.append("계정 활성화를 위한 인증이 필요합니다.<br>");
 		content.append("다음 링크를 클릭하여 계정 인증 하세요.<br>");
-		content.append("<a href='http://localhost:8080/MemberConfirm?No=" + member.getNo() + "'>");
+		content.append("<a href='http://localhost:8080/ex/MemberConfirm?No=" + member.getNo() + "'>");
 		content.append("Click Link!</a>");
 		content.append("</body>");
 		content.append("</html>");

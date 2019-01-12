@@ -25,7 +25,7 @@ public class SignUpController {
 		return "signUp";
 	}
 	
-	@RequestMapping("/idCheck")
+	@RequestMapping("/ex/idCheck")
 	public @ResponseBody Map<Object, Object> IdCheck(@RequestBody String userId) throws Exception {
 
 		int cnt = signUpService.IdCheck(userId);
@@ -36,7 +36,7 @@ public class SignUpController {
 		return map;
 	}
 	
-	@RequestMapping("/RegisterMember")
+	@RequestMapping("/ex/RegisterMember")
 	public @ResponseBody Map<Object, Object> RegisterMember(MemberDTO member) throws Exception {
 
 		boolean result = signUpService.RegisterMember(member); 
@@ -47,7 +47,7 @@ public class SignUpController {
 		return map;
 	}
 
-	@RequestMapping("/MemberConfirm")
+	@RequestMapping("/ex/MemberConfirm")
 	public void MemberConfirm(String No) throws Exception {
 		
 		signUpService.MemberConfirm(No); 

@@ -1,6 +1,6 @@
 package com.erp.app.controller;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,13 +37,13 @@ public class HomeController {
 
 	@RequestMapping("/logout")
 	public String logout() {
-
+		
 		request.getSession().invalidate();
 		
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/findUserInfo")
+	@RequestMapping("/ex/findUserInfo")
 	public @ResponseBody Map<Object, Object> findUserInfo(MemberDTO member) {
 
 		Map<Object, Object> result = homeService.findUserInfo(member); 
