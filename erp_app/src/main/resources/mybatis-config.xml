@@ -5,6 +5,7 @@
 	<mappers>
 		<mapper resource="mappers/Home.xml" />
 		<mapper resource="mappers/SignUp.xml" />
+		<mapper resource="mappers/Profile.xml" />
 	</mappers>
 </configuration>
  

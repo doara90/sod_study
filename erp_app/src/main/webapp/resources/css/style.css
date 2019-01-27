@@ -2027,6 +2027,7 @@ ul li {
 	-webkit-border-radius: 50%;
 	border: 10px solid #f1f2f7;
 	margin-top: 20px;
+	object-fit: cover;
 }
 
 .profile-text h6 {

@@ -1,5 +1,6 @@
 package com.erp.app.dto;
 
+import java.sql.Date;
 
 public class MemberDTO {
 	private String No;
@@ -10,13 +11,15 @@ public class MemberDTO {
 	private String Email;
 	private String Phone;
 	private String Birth;
-	private String JoinDate;
+	private Date JoinDate;
 	private String Lev;
-	private String LastLogin;
+	private Date LastLogin;
 	private String Approval;
 	private String Address1;
 	private String Address2;
 	private String ZipCode;
+	private String FilePath;
+	private byte[] ProfileImg;
 	
 	public String getNo() {
 		return No;
@@ -66,10 +69,10 @@ public class MemberDTO {
 	public void setBirth(String birth) {
 		Birth = birth.replace("-", "");
 	}
-	public String getJoinDate() {
+	public Date getJoinDate() {
 		return JoinDate;
 	}
-	public void setJoinDate(String joinDate) {
+	public void setJoinDate(Date joinDate) {
 		JoinDate = joinDate;
 	}
 	public String getLev() {
@@ -78,10 +81,10 @@ public class MemberDTO {
 	public void setLev(String lev) {
 		Lev = lev;
 	}
-	public String getLastLogin() {
+	public Date getLastLogin() {
 		return LastLogin;
 	}
-	public void setLastLogin(String lastLogin) {
+	public void setLastLogin(Date lastLogin) {
 		LastLogin = lastLogin;
 	}
 	public String getApproval() {
@@ -99,6 +102,12 @@ public class MemberDTO {
 	public String getAddress2() {
 		return Address2;
 	}
+	public byte[] getProfileImg() {
+		return ProfileImg;
+	}
+	public void setProfileImg(byte[] profileImg) {
+		ProfileImg = profileImg;
+	}
 	public void setAddress2(String address2) {
 		Address2 = address2;
 	}
@@ -107,6 +116,12 @@ public class MemberDTO {
 	}
 	public void setZipCode(String zipCode) {
 		ZipCode = zipCode;
+	}
+	public String getFilePath() {
+		return FilePath;
+	}
+	public void setFilePath(String filePath) {
+		FilePath = filePath;
 	}
 
 	

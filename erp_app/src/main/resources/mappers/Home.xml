@@ -17,6 +17,7 @@
 	         , LEV
 	         , LAST_LOGIN
 	         , APPROVAL
+	         , PROFILE_IMG
 	      FROM MEMBER
 	     WHERE 1 = 1
 	     
