@@ -243,9 +243,13 @@
 							</div>
 
 							<div class="form-group">
-								<label for="addr" class="control-label col-lg-2 col-sm-3">주소</label> <input class="form-control " style="width: 20%; display: inline" type="text" id="zipCode" placeholder="우편번호" readOnly /> <input type="button" class="btn btn-theme" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> <label for="addr" class="control-label col-lg-2 col-sm-3"></label>
+								<label for="addr" class="control-label col-lg-2 col-sm-3">주소</label> 
+								<input class="form-control " style="width: 20%; display: inline" type="text" id="zipCode" placeholder="우편번호" readOnly /> 
+								<input type="button" class="btn btn-theme" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> 
+								<label for="addr" class="control-label col-lg-2 col-sm-3"></label>
 								<div style="margin-top: 3px;">
-									<input class="form-control " style="width: 25%; display: inline-block" type=text " id="address1" placeholder="주소" readOnly> <input class="form-control " style="width: 25%; display: inline-block" type="text" id="address2" placeholder="상세주소">
+									<input class="form-control " style="width: 25%; display: inline-block" type="text" id="address1" placeholder="주소" readOnly> 
+									<input class="form-control " style="width: 25%; display: inline-block" type="text" id="address2" placeholder="상세주소">
 								</div>
 							</div>
 

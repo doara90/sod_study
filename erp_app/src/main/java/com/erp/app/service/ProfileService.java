@@ -30,7 +30,6 @@ public class ProfileService {
 	// 사용자 프로필 수정
 	public boolean updateProfile(MemberDTO member) {
 
-		
 		profileDao.updateProfile(member);
 
 		return true;	

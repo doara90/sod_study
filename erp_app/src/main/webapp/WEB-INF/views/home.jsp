@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="Dashboard">
 <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-<title>Sod Tour : 로그인</title>
+<title>Sod Tour ::</title>
 
 <!-- Favicons -->
 <link href="resources/img/favicon.png" rel="icon">
@@ -130,7 +130,7 @@
       *********************************************************************************************************************************************************** -->
 	<div id="login-page">
 		<div class="container">
-			<form class="form-login" name="frm" onsubmit="return false;" method="post" action="/tour">
+			<form class="form-login" name="frm" onsubmit="return false;" method="post" action="/main">
 				<h2 class="form-login-heading">sign in now</h2>
 				<div class="login-wrap">
 					<input type="text" id="id" class="form-control" placeholder="User ID" autofocus> <br> <input type="password" id="password" class="form-control" placeholder="Password"> <br>

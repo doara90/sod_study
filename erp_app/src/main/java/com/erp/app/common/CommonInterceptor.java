@@ -18,7 +18,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
         	if (uri.equals("/") || uri.equals("/login") || uri.equals("/signUp")){
         		if(request.getSession().getAttribute("LoginInfo") != null ){
 
-                    response.sendRedirect("/tour");  
+                    response.sendRedirect("/main");  
                     result =  false;
                 }else{ 
                     result =  true;

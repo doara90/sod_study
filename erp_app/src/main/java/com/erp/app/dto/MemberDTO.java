@@ -2,6 +2,8 @@ package com.erp.app.dto;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberDTO {
 	private String No;
 	private String Name;
@@ -18,8 +20,7 @@ public class MemberDTO {
 	private String Address1;
 	private String Address2;
 	private String ZipCode;
-	private String FilePath;
-	private byte[] ProfileImg;
+	private MultipartFile FileUpload;
 	
 	public String getNo() {
 		return No;
@@ -102,12 +103,6 @@ public class MemberDTO {
 	public String getAddress2() {
 		return Address2;
 	}
-	public byte[] getProfileImg() {
-		return ProfileImg;
-	}
-	public void setProfileImg(byte[] profileImg) {
-		ProfileImg = profileImg;
-	}
 	public void setAddress2(String address2) {
 		Address2 = address2;
 	}
@@ -117,11 +112,11 @@ public class MemberDTO {
 	public void setZipCode(String zipCode) {
 		ZipCode = zipCode;
 	}
-	public String getFilePath() {
-		return FilePath;
+	public MultipartFile getFileUpload() {
+		return FileUpload;
 	}
-	public void setFilePath(String filePath) {
-		FilePath = filePath;
+	public void setFileUpload(MultipartFile fileUpload) {
+		FileUpload = fileUpload;
 	}
 
 	

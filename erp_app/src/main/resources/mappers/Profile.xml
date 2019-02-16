@@ -3,10 +3,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="profile">
 
-    
 	<update id="updateProfile" parameterType="com.erp.app.dto.MemberDTO">
 			 UPDATE MEMBER
-			    SET PROFILE_IMG = #{ProfileImg}
+			    SET BIRTH = #{Birth}
+			      , EMAIL = #{Email}
+		          , ADDRESS1 = #{Address1}
+		          , ADDRESS2 = #{Address2}
+			      , ZIPCODE = #{ZipCode}
+			      
+	    <if test="Password != null and Password != ''">
+                  , PASSWORD = #{Password}
+        </if>
 			  WHERE ID = #{Id}
     </update>  
 </mapper>
